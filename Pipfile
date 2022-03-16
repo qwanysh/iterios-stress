@@ -10,6 +10,13 @@ python-dotenv = "*"
 loguru = "*"
 
 [dev-packages]
+flake8 = "*"
+flake8-import-order = "*"
+flake8-multiline-containers = "*"
+flake8-commas = "*"
+flake8-quotes = "*"
+flake8-print = "*"
+flake8-eradicate = "*"
 
 [requires]
 python_version = "3.9"

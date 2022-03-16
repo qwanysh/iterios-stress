@@ -2,13 +2,15 @@ import asyncio
 from time import time
 
 from httpx import RequestError
+from loguru import logger
 
 from src.client import IteriosApiClient
 from src.exceptions import FailedResponseError
-from src.helpers import get_search_start_payload, get_random_country, get_random_dep_city, setup_logger, get_timing_results
+from src.helpers import (
+    get_random_country, get_random_dep_city, get_search_start_payload, get_timing_results,
+    setup_logger,
+)
 from src.settings import settings
-
-from loguru import logger
 
 
 async def start_search(index: int):
@@ -62,7 +64,7 @@ async def main():
 
     elapsed_times = [timing[1] for timing in timings]
     results = get_timing_results(elapsed_times)
-    logger.info(f"Results: max({results['max']}s), min({results['min']}s), average({results['average']}s), fails({results['failed']}/{results['total']})")
+    logger.info(f"Results: max({results['max']}s), min({results['min']}s), average({results['average']}s), fails({results['failed']}/{results['total']})")  # noqa: E501
 
 
 if __name__ == '__main__':

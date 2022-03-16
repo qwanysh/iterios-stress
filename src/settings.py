@@ -1,4 +1,4 @@
-from pydantic import BaseSettings, constr, conint
+from pydantic import BaseSettings, conint, constr
 
 
 class Settings(BaseSettings):
