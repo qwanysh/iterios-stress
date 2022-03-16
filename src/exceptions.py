@@ -1,0 +1,2 @@
+class FailedResponseError(Exception):
+    pass
