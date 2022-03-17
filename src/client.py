@@ -11,6 +11,7 @@ class IteriosApiClient(AsyncClient):
             headers={
                 'x-iterios-api-key': settings.iterios_api_key,
             },
+            timeout=60,
         )
 
     async def get_main_reference(self, country_iso: str, dep_city_id: int):
