@@ -28,8 +28,8 @@ async def start_search(index: int):
                 country_id=country['id'], dep_city_id=dep_city['id'], main_reference=main_reference,
             )
             await client.start_search(payload)
-    except (FailedResponseError, RequestError):
-        logger.error(f'Fail search #{index}')
+    except (FailedResponseError, RequestError) as error:
+        logger.error(f'Fail search #{index} ({repr(error)})')
         return index, None
 
     elapsed_time = round(time() - start_time, 2)
@@ -64,7 +64,7 @@ async def main():
 
     elapsed_times = [timing[1] for timing in timings]
     results = get_timing_results(elapsed_times)
-    logger.info(f"Results: max({results['max']}s), min({results['min']}s), average({results['average']}s), fails({results['failed']}/{results['total']})")  # noqa: E501
+    logger.info(f"Results: min({results['min']}s), max({results['max']}s), average({results['average']}s), fails({results['failed']}/{results['total']})")  # noqa: E501
 
 
 if __name__ == '__main__':
